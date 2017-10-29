@@ -1,6 +1,9 @@
 # Compiled class file
 *.class
 
+# Target (binary output) directory
+target/
+
 # Log file
 *.log
 
