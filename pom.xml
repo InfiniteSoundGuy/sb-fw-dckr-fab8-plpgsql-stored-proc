@@ -23,6 +23,7 @@
         <spring-test.version>4.3.9.RELEASE</spring-test.version>
         <spring-boot-test.version>1.5.4.RELEASE</spring-boot-test.version>
         <lombok-maven-plugin.version>1.16.18.1</lombok-maven-plugin.version>
+        <fabric8.version>0.20.2</fabric8.version>
     </properties>
 
     <dependencies>
@@ -146,7 +147,7 @@
             <plugin>
                 <groupId>io.fabric8</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
-                <version>0.20.2</version>
+                <version>${fabric8.version}</version>
                 <configuration>
                     <logDate>default</logDate>
                     <autoPull>true</autoPull>
@@ -159,11 +160,6 @@
                                 <ports>
                                     <port>5432</port>
                                 </ports>
-                                <env>
-                                    <POSTGRES_USER>infinitesounduser</POSTGRES_USER>
-                                    <POSTGRES_PASSWORD>infinitesoundpassword</POSTGRES_PASSWORD>
-                                    <POSTGRES_DB>infinitesound</POSTGRES_DB>
-                                </env>
                                 <dockerFileDir>${project.basedir}/docker</dockerFileDir>
                             </build>
                             <run>
