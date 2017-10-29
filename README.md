@@ -1,2 +1,9 @@
 # sb-fw-dckr-fab8-plpgsql-stored-proc
-Example: IT combining Spring Boot, Flyway, Docker, Fabric8 docker-maven-plugin, PostgreSQL native stored procedure
+Example: Integration tests
+- Spring Boot
+- Docker
+- Hibernate (JPA)
+- Flyway (executes SQL scripts after postgres starts in container)
+- Fabric8 docker-maven-plugin (to control image build and container startup for integration tests)
+- Example code using entityManager.createStoredProcedureQuery(...)
+- PostgreSQL native "plpgsql" stored procedure, including use of "TABLE" construct for returning resultset
