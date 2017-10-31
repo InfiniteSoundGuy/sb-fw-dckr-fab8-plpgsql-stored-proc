@@ -1,4 +1,4 @@
-package com.infinitysoundstudio;
+package com.infinitesoundstudio;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;

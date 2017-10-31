@@ -1,8 +1,8 @@
-package com.infinitysoundstudio.service;
+package com.infinitesoundstudio.service;
 
-import com.infinitysoundstudio.domain.entity.ExampleEntity;
-import com.infinitysoundstudio.domain.nonentity.NonEntity;
-import com.infinitysoundstudio.domain.repository.StoredProcedureRepository;
+import com.infinitesoundstudio.domain.entity.ExampleEntity;
+import com.infinitesoundstudio.domain.nonentity.NonEntity;
+import com.infinitesoundstudio.domain.repository.StoredProcedureRepository;
 import java.time.Instant;
 import java.util.List;
 import java.util.stream.Collectors;

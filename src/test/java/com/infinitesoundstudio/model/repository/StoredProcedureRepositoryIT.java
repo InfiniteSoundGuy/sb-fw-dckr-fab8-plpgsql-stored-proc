@@ -1,9 +1,9 @@
-package com.infinitysoundstudio.service;
+package com.infinitesoundstudio.model.repository;
 
-import com.infinitysoundstudio.FakeDataGenerator;
-import com.infinitysoundstudio.domain.entity.ExampleEntity;
-import com.infinitysoundstudio.domain.nonentity.NonEntity;
-import com.infinitysoundstudio.domain.repository.ExampleEntityRepository;
+import com.infinitesoundstudio.FakeDataGenerator;
+import com.infinitesoundstudio.domain.entity.ExampleEntity;
+import com.infinitesoundstudio.domain.repository.ExampleEntityRepository;
+import com.infinitesoundstudio.domain.repository.StoredProcedureRepository;
 import java.util.List;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -18,19 +18,19 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- * Integration test for {@link DataGatheringService}
+ * Integration test for {@link StoredProcedureRepository}
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @EnableAutoConfiguration
 @ActiveProfiles("integration-test")
-public class DataGatheringServiceIT extends FakeDataGenerator {
+public class StoredProcedureRepositoryIT extends FakeDataGenerator {
 
     @Autowired
     ExampleEntityRepository exampleEntityRepository;
 
     @Autowired
-    DataGatheringService dataGatheringService;
+    StoredProcedureRepository storedProcedureRepository;
 
     @Before
     public void setUp() {
@@ -51,7 +51,7 @@ public class DataGatheringServiceIT extends FakeDataGenerator {
 
         System.out.println("Performing query and getting results...");
 
-        List<ExampleEntity> result = dataGatheringService.getEntityData(START_DATE, END_DATE);
+        List<ExampleEntity> result = storedProcedureRepository.getEntityData(START_DATE, END_DATE);
         result.stream()
                 .peek(out -> System.out.println("out = " + out))
                 .count(); // arbitary terminal operation for peek
@@ -62,20 +62,4 @@ public class DataGatheringServiceIT extends FakeDataGenerator {
         assertThat(result, not(emptyIterable()));
     }
 
-    @Test
-    public void testGetNonEntityData() {
-        System.out.println("testGetNonEntityData");
-
-        System.out.println("Performing query and getting results...");
-
-        List<NonEntity> result = dataGatheringService.getNonEntityData(START_DATE, END_DATE);
-        result.stream()
-                .peek(out -> System.out.println("out = " + out))
-                .count(); // arbitary terminal operation for peek
-
-        System.out.println("... Done!");
-
-        assertThat(result, notNullValue());
-        assertThat(result, not(emptyIterable()));
-    }
 }

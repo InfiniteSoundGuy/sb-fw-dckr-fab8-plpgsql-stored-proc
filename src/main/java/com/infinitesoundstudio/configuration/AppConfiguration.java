@@ -1,4 +1,4 @@
-package com.infinitysoundstudio.configuration;
+package com.infinitesoundstudio.configuration;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

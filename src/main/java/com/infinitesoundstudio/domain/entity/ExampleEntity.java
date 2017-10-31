@@ -1,4 +1,4 @@
-package com.infinitysoundstudio.domain.entity;
+package com.infinitesoundstudio.domain.entity;
 
 import java.time.Instant;
 import javax.persistence.*;

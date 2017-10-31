@@ -1,6 +1,6 @@
-package com.infinitysoundstudio.domain.repository;
+package com.infinitesoundstudio.domain.repository;
 
-import com.infinitysoundstudio.domain.entity.ExampleEntity;
+import com.infinitesoundstudio.domain.entity.ExampleEntity;
 import java.time.Instant;
 import java.util.List;
 import javax.persistence.*;

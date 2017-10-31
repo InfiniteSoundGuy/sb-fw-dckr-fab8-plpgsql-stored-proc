@@ -1,8 +1,8 @@
-package com.infinitysoundstudio.model.repository;
+package com.infinitesoundstudio.model.repository;
 
-import com.infinitysoundstudio.FakeDataGenerator;
-import com.infinitysoundstudio.domain.entity.ExampleEntity;
-import com.infinitysoundstudio.domain.repository.ExampleEntityRepository;
+import com.infinitesoundstudio.FakeDataGenerator;
+import com.infinitesoundstudio.domain.entity.ExampleEntity;
+import com.infinitesoundstudio.domain.repository.ExampleEntityRepository;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import org.junit.Before;

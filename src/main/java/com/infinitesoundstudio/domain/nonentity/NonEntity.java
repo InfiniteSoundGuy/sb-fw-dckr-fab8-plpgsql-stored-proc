@@ -1,4 +1,4 @@
-package com.infinitysoundstudio.domain.nonentity;
+package com.infinitesoundstudio.domain.nonentity;
 
 import java.time.Instant;
 import lombok.*;
