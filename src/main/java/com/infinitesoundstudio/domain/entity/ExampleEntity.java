@@ -18,6 +18,7 @@ public class ExampleEntity {
     // order.
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "EXAMPLE_ID")
     private long id;
     private Instant insertDate;
     private String label;
