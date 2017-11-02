@@ -1,8 +1,8 @@
-package com.infinitesoundstudio.model.repository;
+package com.infinitesoundstudio.domain.repository;
 
 import com.infinitesoundstudio.FakeDataGenerator;
+import static com.infinitesoundstudio.TestUtil.print;
 import com.infinitesoundstudio.domain.entity.ExampleEntity;
-import com.infinitesoundstudio.domain.repository.ExampleEntityRepository;
 import java.math.BigInteger;
 import java.time.Instant;
 import java.util.Random;
@@ -33,11 +33,13 @@ public class EntityManagerRepositoryIT extends FakeDataGenerator {
 
     @Before
     public void setUp() {
+        print(this, "setUp");
         exampleEntityRepository.deleteAll();
     }
 
     @Test
     public void testInsertExample() {
+        print(this, "testInsertExample");
         createEntity(10).forEach(example -> {
             insertExample(example);
             System.out.println("example == " + example);

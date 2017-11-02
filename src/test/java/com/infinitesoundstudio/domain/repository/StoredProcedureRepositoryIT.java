@@ -1,9 +1,8 @@
-package com.infinitesoundstudio.model.repository;
+package com.infinitesoundstudio.domain.repository;
 
 import com.infinitesoundstudio.FakeDataGenerator;
+import static com.infinitesoundstudio.TestUtil.print;
 import com.infinitesoundstudio.domain.entity.ExampleEntity;
-import com.infinitesoundstudio.domain.repository.ExampleEntityRepository;
-import com.infinitesoundstudio.domain.repository.StoredProcedureRepository;
 import java.util.List;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -34,8 +33,8 @@ public class StoredProcedureRepositoryIT extends FakeDataGenerator {
 
     @Before
     public void setUp() {
+        print(this, "setUp");
         exampleEntityRepository.deleteAll(); // clean house
-
         loadEntities(exampleEntityRepository, 3); // load data
 
         // Show persisted entities
@@ -47,7 +46,7 @@ public class StoredProcedureRepositoryIT extends FakeDataGenerator {
 
     @Test
     public void testGetEntityData() {
-        System.out.println("testGetEntityData");
+        print(this, "testGetEntityData");
 
         System.out.println("Performing query and getting results...");
 

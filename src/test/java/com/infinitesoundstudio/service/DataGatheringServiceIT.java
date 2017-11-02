@@ -1,7 +1,7 @@
 package com.infinitesoundstudio.service;
 
-import com.infinitesoundstudio.service.DataGatheringService;
 import com.infinitesoundstudio.FakeDataGenerator;
+import static com.infinitesoundstudio.TestUtil.print;
 import com.infinitesoundstudio.domain.entity.ExampleEntity;
 import com.infinitesoundstudio.domain.nonentity.NonEntity;
 import com.infinitesoundstudio.domain.repository.ExampleEntityRepository;
@@ -27,6 +27,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 @ActiveProfiles("integration-test")
 public class DataGatheringServiceIT extends FakeDataGenerator {
 
+    int COUNT = 3;
+
     @Autowired
     ExampleEntityRepository exampleEntityRepository;
 
@@ -35,11 +37,11 @@ public class DataGatheringServiceIT extends FakeDataGenerator {
 
     @Before
     public void setUp() {
+        print(this, "setUp");
         exampleEntityRepository.deleteAll(); // clean house
+        loadEntities(exampleEntityRepository, COUNT); // load data
 
-        loadEntities(exampleEntityRepository, 3); // load data
-
-        // Show persisted entities
+        // Show loaded entities
         exampleEntityRepository.findAll().stream()
                 .peek(ee -> System.out.println("ee == " + ee))
                 .count(); // arbitary terminal operation for peek
@@ -48,35 +50,37 @@ public class DataGatheringServiceIT extends FakeDataGenerator {
 
     @Test
     public void testGetEntityData() {
-        System.out.println("testGetEntityData");
-
-        System.out.println("Performing query and getting results...");
-
+        print(this, "testGetEntityData");
         List<ExampleEntity> result = dataGatheringService.getEntityData(START_DATE, END_DATE);
         result.stream()
                 .peek(out -> System.out.println("out = " + out))
                 .count(); // arbitary terminal operation for peek
-
-        System.out.println("... Done!");
-
         assertThat(result, notNullValue());
         assertThat(result, not(emptyIterable()));
+        assertThat(result, hasSize(COUNT));
+    }
+
+    @Test
+    public void testConvertedEntityData() {
+        print(this, "testConvertedEntityData");
+        List<NonEntity> result = dataGatheringService.getConvertedEntityData(START_DATE, END_DATE);
+        result.stream()
+                .peek(out -> System.out.println("out = " + out))
+                .count(); // arbitary terminal operation for peek
+        assertThat(result, notNullValue());
+        assertThat(result, not(emptyIterable()));
+        assertThat(result, hasSize(COUNT));
     }
 
     @Test
     public void testGetNonEntityData() {
-        System.out.println("testGetNonEntityData");
-
-        System.out.println("Performing query and getting results...");
-
+        print(this, "testGetNonEntityData");
         List<NonEntity> result = dataGatheringService.getNonEntityData(START_DATE, END_DATE);
         result.stream()
                 .peek(out -> System.out.println("out = " + out))
                 .count(); // arbitary terminal operation for peek
-
-        System.out.println("... Done!");
-
         assertThat(result, notNullValue());
         assertThat(result, not(emptyIterable()));
+        assertThat(result, hasSize(COUNT));
     }
 }
