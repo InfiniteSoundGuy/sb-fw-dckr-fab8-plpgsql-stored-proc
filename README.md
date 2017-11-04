@@ -7,3 +7,5 @@ Example: Integration tests
 - Fabric8 docker-maven-plugin (to control image build and container startup for integration tests)
 - Example code using entityManager.createStoredProcedureQuery(...)
 - PostgreSQL native "plpgsql" stored procedure, including use of "TABLE" construct for returning resultset
+
+This project features a variety of "corner case" @Repository implementations.
