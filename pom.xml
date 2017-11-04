@@ -157,6 +157,20 @@
                             <goal>start</goal>
                         </goals>
                         <configuration>
+                            <!-- Best Practice: Keep this configuration block
+                            inside the "start" execution, instead of at the
+                            top-level of the fabric8 plugin (i.e., between
+                            <version> and <executions>). Why: In a real product
+                            build, it is theoretically possible your company's
+                            parent POM file(s) already configured fabric8, via
+                            pluginManagement, for CT/CI delivery!
+
+                            In general - and this is true for all Maven plugins
+                            - you should isolate your test-specific
+                            configuration(s) to test-specific execution(s),
+                            instead of at the top-level of the plugin. This will
+                            avoid causing unanticipated or disastrous behaviors.
+                            Heed: the Voice of Experience has warned you. -->
                             <logDate>default</logDate>
                             <autoPull>true</autoPull>
                             <verbose>true</verbose>
