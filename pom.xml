@@ -148,36 +148,6 @@
                 <groupId>io.fabric8</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>${fabric8.version}</version>
-                <configuration>
-                    <logDate>default</logDate>
-                    <autoPull>true</autoPull>
-                    <verbose>true</verbose>
-                    <images>
-                        <image>
-                            <alias>db</alias>
-                            <name>postgres</name>
-                            <build>
-                                <ports>
-                                    <port>5432</port>
-                                </ports>
-                                <dockerFileDir>${project.basedir}/docker</dockerFileDir>
-                            </build>
-                            <run>
-                                <ports>
-                                    <port>5433:5432</port>
-                                </ports>
-                                <wait>
-                                    <log>PostgreSQL init process complete; ready for start up.</log>
-                                    <time>20000</time>
-                                </wait>
-                                <log>
-                                    <prefix>DB</prefix>
-                                    <color>yellow</color>
-                                </log>
-                            </run>
-                        </image>
-                    </images>
-                </configuration>
                 <executions>
                     <execution>
                         <id>start</id>
@@ -186,6 +156,36 @@
                             <goal>build</goal>
                             <goal>start</goal>
                         </goals>
+                        <configuration>
+                            <logDate>default</logDate>
+                            <autoPull>true</autoPull>
+                            <verbose>true</verbose>
+                            <images>
+                                <image>
+                                    <alias>db</alias>
+                                    <name>postgres</name>
+                                    <build>
+                                        <ports>
+                                            <port>5432</port>
+                                        </ports>
+                                        <dockerFileDir>${project.basedir}/docker</dockerFileDir>
+                                    </build>
+                                    <run>
+                                        <ports>
+                                            <port>5433:5432</port>
+                                        </ports>
+                                        <wait>
+                                            <log>PostgreSQL init process complete; ready for start up.</log>
+                                            <time>20000</time>
+                                        </wait>
+                                        <log>
+                                            <prefix>DB</prefix>
+                                            <color>yellow</color>
+                                        </log>
+                                    </run>
+                                </image>
+                            </images>
+                        </configuration>
                     </execution>
                     <execution>
                         <id>stop</id>
